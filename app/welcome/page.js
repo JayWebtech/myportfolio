@@ -7,28 +7,38 @@ import { BiLoaderAlt } from "react-icons/bi";
 const page = () => {
     const router = useRouter();
     const [name, setName] = useState("")
+    const [blur, setBlur] = useState(false)
     const [loading, setLoading] = useState(false);
     const nameHanderler = (event) => {
-        const { name, value } = event.target;
+        const { yourname, value } = event.target;
         setName((prevData) => ({
           ...prevData,
-          name: value,
+          yourname: value,
         }));
+        
     };
+    const onInputClick =() =>{
+      setBlur(true)
+    }
+    const handleBlur = () => {
+      setBlur(false)
+    }
 
     const proceed = () => {
         setLoading(true)
         if(name!==""){
             localStorage.setItem("name", name)
         }
+        const audio = new Audio("start.mp3");
+        audio.play();
         router.push("/home")
     }
     
 
   return (
     <m.div initial={{ y: "-100%" }} animate={{ y: "0" }} transition={{ duration: 0.75, ease: "easeOut" }}>
-    <main className="flex flex-col h-screen items-center justify-center bg-slate-950 homepage">
-      <div className="flex flex-col items-center justify-center flex-grow">
+    <main className="flex flex-col h-screen items-center justify-center homepage">
+      <div className={blur ? "flex flex-col items-center w-screen justify-center flex-grow backdrop-blur-md" : "flex flex-col items-center justify-center flex-grow"}>
         <Image
           src="/img.jpeg"
           width={150}
@@ -45,8 +55,12 @@ const page = () => {
           type="text"
           className="border-gray-400 border-b-2 w-[300px] rounded-md bg-gray-950 p-2  text-white outline-none mb-5"
           placeholder="Enter your name"
-          name="name"
+          name="yourname"
+          autoComplete="false"
+          autoSave="false"
           onChange={nameHanderler}
+          onBlur={handleBlur}
+          onClick={onInputClick}
         />
         <button className="py-3 px-1 text-white rounded-md w-[150px] backdrop-blur-2xl shadow-lg  flex items-center justify-center" onClick={proceed} disabled={loading}>
         {loading ? (
@@ -62,6 +76,7 @@ const page = () => {
             </button>
       </div>
       <div className="flex items-center justify-center  p-3 backdrop-blur-lg space-x-6 w-screen"></div>
+    
     </main>
     </m.div>
   );

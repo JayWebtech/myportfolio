@@ -46,7 +46,7 @@ export default function Home() {
       <TypeAnimation
           sequence={[
             currentQuote,
-            10,
+            700,
             () => {
                 router.push("/welcome")
             },

@@ -3,7 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  font-family: 'Rajdhani', sans-serif;
+}
 .font-light {
   font-weight: 200;
 }
