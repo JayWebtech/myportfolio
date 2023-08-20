@@ -6,16 +6,18 @@ import { VscGithubInverted } from "react-icons/vsc";
 import { AiFillLinkedin } from "react-icons/ai";
 import { FaTwitterSquare } from "react-icons/fa";
 import { BsFillCloudFill } from "react-icons/bs";
-import {GrAchievement} from "react-icons/gr";
+import { GrAchievement } from "react-icons/gr";
 import Link from "next/link";
 import Image from "next/image";
-import {BsPersonWorkspace} from "react-icons/bs";
-import {GiSkills} from "react-icons/gi";
-
-
+import { FcBullish } from "react-icons/fc";
+import { FcGraduationCap } from "react-icons/fc";
+import { BiSolidFilePdf } from "react-icons/bi";
+import { FcCollaboration } from "react-icons/fc";
+import { BiChevronUp } from "react-icons/bi";
+import { BiChevronDown } from "react-icons/bi";
+import { motion as m} from "framer-motion";
 
 const Page = () => {
-    
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isStartMenuHovered, setIsStartMenuHovered] = useState(false);
   const [isProjectsHovered, setIsProjectsHovered] = useState(false);
@@ -26,38 +28,39 @@ const Page = () => {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [screen, screenSet] = useState(false);
   const [click, isClick] = useState(false);
+  const [info, setInfo] = useState(false);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
+  //   useEffect(() => {
+  //     const intervalId = setInterval(() => {
+  //       setCurrentTime(new Date());
+  //     }, 1000);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
+  //     return () => {
+  //       clearInterval(intervalId);
+  //     };
+  //   }, []);
 
-  const formattedTime = currentTime.toLocaleTimeString();
-  const currentDate = new Date();
-  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-  const day = String(currentDate.getDate()).padStart(2, "0");
-  const year = currentDate.getFullYear();
+  //   const formattedTime = currentTime.toLocaleTimeString();
+  //   const currentDate = new Date();
+  //   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  //   const day = String(currentDate.getDate()).padStart(2, "0");
+  //   const year = currentDate.getFullYear();
 
-  const formattedDate = `${month}/${day}/${year}`;
-
+  //   const formattedDate = `${month}/${day}/${year}`;
 
   return (
     <main
       className="flex flex-col h-screen items-center justify-center bg-slate-950 homepage "
-      onClick={() => {
-        if (click) {
-            const audio = new Audio("click.wav");
-        audio.play();
-          isClick(!click);
-          screenSet(!screen);
-          setIsStartMenuOpen(!isStartMenuOpen);
-        }
-      }}
+      pointer-events="auto"
+      //   onClick={() => {
+      //     if (click) {
+      //       // const audio = new Audio("click.wav");
+      //       // audio.play();
+      //       isClick(!click);
+      //       screenSet(!screen);
+      //       setIsStartMenuOpen(!isStartMenuOpen);
+      //     }
+      //   }}
     >
       <div
         className={
@@ -67,27 +70,87 @@ const Page = () => {
         }
       >
         {isStartMenuOpen && screen && (
-          <div className="mt-auto bg-opacity-100 backdrop-blur-lg border border-gray-400 border-opacity-10 text-white p-5 rounded-2xl text-[13px] w-[450px] h-[200px] text-center">
-            <div className="flex space-x-8 items-center">
-                <div>
-                    <FcFolder className="text-6xl" />
-                    <p>Projects</p>
+          <div className="flex  flex-col mt-auto bg-opacity-100 backdrop-blur-lg border border-gray-400 border-opacity-10 text-white rounded-2xl text-[13px] w-[450px] h-auto text-center">
+            <div className="flex space-x-8 items-center justify-center  p-5 ">
+              <div className="flex flex-col items-center justify-center">
+                <FcFolder className="text-5xl" />
+                <p className="text-center">Projects</p>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <BiSolidFilePdf className="text-5xl text-red-600" />
+                <p className="text-center">Resume</p>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <FcCollaboration className="text-5xl" />
+                <p className="text-center">Experience</p>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <FcBullish className="text-5xl " />
+                <p className="text-center">Impact</p>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <FcGraduationCap className="text-5xl" />
+                <p className="text-center">Education</p>
+              </div>
+            </div>
+
+            {info && (
+              <div className="flex flex-col items-start justify-start p-5">
+                <div className="flex items-start justify-start gap-[136px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
+                  <p>Name:</p>
+                  <p>Adamu Jethro</p>
                 </div>
-                <div>
-                    <Image src="adobe.svg" width={50} height={50} className="" />
-                    <p>Resume</p>
+                <hr></hr>
+                <div className="flex items-start justify-start gap-[140px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
+                  <p>Email:</p>
+                  <p>jethroadamzy@gmail.com</p>
                 </div>
-                <div>
-                    <BsPersonWorkspace  className="text-6xl bg-slate-900 p-5"/>
-                    <p>Experience</p>
-                 </div>
-                <div className="bg-green-500 rounded-md p-2">
-                    <GrAchievement className="text-4xl text-white"/>
-                 </div>
-                 <div className="bg-purple-900 rounded-md p-2">
-                    <GiSkills className="text-4xl"/>
-                 </div>
-                 
+                <div className="flex items-start justify-start gap-[80px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
+                  <p>Phone Number:</p>
+                  <p>08084348312</p>
+                </div>
+                <div className="flex items-start justify-start gap-[103px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
+                  <p>Experience:</p>
+                  <p>5 years</p>
+                </div>
+                <div className="flex items-start justify-start gap-[140px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
+                  <p>Skills:</p>
+                  <p className="text-left">
+                    React, Next JS, HTML, CSS, PHP, Flutter, Dart, UI/UX,
+                    JavaScript, NodeJS, Express, MongoDB, Firebase, REST, Git,
+                    Google Maps Platform, Java, Python
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-center  bg-black mt-auto w-full bg-opacity-20 rounded-b-2xl p-3 space-x-3">
+              <Image src="/male.svg" width={40} height={40} className="" />
+              <div className="flex flex-col justify-start items-start flex-grow">
+                <p className="text-white text-[14px]">Adamu Jethro</p>
+                <p className="text-white text-[11px]">Web/Mobile Developer</p>
+              </div>
+              <div className="ml-auto">
+                {info ? (
+                  <BiChevronDown
+                    className="text-3xl cursor-pointer"
+                    onClick={() => {
+                      const audio = new Audio("click.wav");
+                      audio.play();
+                      setInfo(!info);
+                    }}
+                  />
+                ) : (
+                  <BiChevronUp
+                    className="text-3xl cursor-pointer"
+                    onClick={() => {
+                      const audio = new Audio("click.wav");
+                      audio.play();
+                      setInfo(!info);
+                    }}
+                  />
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -112,7 +175,7 @@ const Page = () => {
             onMouseEnter={() => setIsStartMenuHovered(true)}
             onMouseLeave={() => setIsStartMenuHovered(false)}
             onClick={() => {
-                const audio = new Audio("click.wav");
+              const audio = new Audio("click.wav");
               audio.play();
               isClick(!click);
               screenSet(!screen);
@@ -142,7 +205,7 @@ const Page = () => {
           <Link
             href="https://github.com/JayWebtech"
             onClick={() => {
-                const audio = new Audio("click.wav");
+              const audio = new Audio("click.wav");
               audio.play();
             }}
             target="_blank"
@@ -164,7 +227,7 @@ const Page = () => {
             href="https://www.linkedin.com/in/jaykosai/"
             target="_blank"
             onClick={() => {
-                const audio = new Audio("click.wav");
+              const audio = new Audio("click.wav");
               audio.play();
             }}
           >
@@ -185,7 +248,7 @@ const Page = () => {
             href="https://twitter.com/jaykosai"
             target="_blank"
             onClick={() => {
-                const audio = new Audio("click.wav");
+              const audio = new Audio("click.wav");
               audio.play();
             }}
           >
@@ -205,8 +268,8 @@ const Page = () => {
         </div>
         <div className="basis-2/12">
           <div className="flex flex-col items-end">
-            <p className="text-white Rajdhani">{formattedTime}</p>
-            <p className="text-white text-[13px] Rajdhani">{formattedDate}</p>
+            {/* <p className="text-white Rajdhani">{formattedTime}</p> */}
+            {/* <p className="text-white text-[13px] Rajdhani">{formattedDate}</p> */}
           </div>
         </div>
       </div>
