@@ -25,6 +25,17 @@ body{
 .font-extraBold {
   font-weight: 700;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #333; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #333;
+  border-radius: 10px;
+}
 /* .booting{
   background-image: url("/../4.jpg");
   background-blend-mode: overlay;

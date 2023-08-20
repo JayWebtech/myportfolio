@@ -15,7 +15,7 @@ import { BiSolidFilePdf } from "react-icons/bi";
 import { FcCollaboration } from "react-icons/fc";
 import { BiChevronUp } from "react-icons/bi";
 import { BiChevronDown } from "react-icons/bi";
-import { motion as m} from "framer-motion";
+import { MdOutlineClose } from "react-icons/md";
 
 const Page = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -24,11 +24,16 @@ const Page = () => {
   const [isGithubHovered, setIsGithubHovered] = useState(false);
   const [isLinkedInHovered, setIsLinkedInHovered] = useState(false);
   const [isTwitterHovered, setIsTwitterHovered] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [screen, screenSet] = useState(false);
   const [click, isClick] = useState(false);
   const [info, setInfo] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   //   useEffect(() => {
   //     const intervalId = setInterval(() => {
@@ -62,6 +67,143 @@ const Page = () => {
       //     }
       //   }}
     >
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50 transition-opacity ${
+          showModal ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="bg-opacity-100 backdrop-blur-3xl border border-gray-400  w-[1000px] h-[500px] p-1 rounded-lg shadow-xl  border-opacity-10">
+          <div className="flex">
+            <MdOutlineClose
+              className="text-white text-4xl ml-auto p-1  hover:bg-red-600 rounded-tr-md rounded-br-md"
+              onClick={() => {
+                const audio = new Audio("click.wav");
+                audio.play();
+                closeModal();
+              }}
+            />
+          </div>
+          <div className="flex flex-col items-start justify-start p-5 overflow-y-scroll">
+            <h1 className="text-4xl font-bold text-white border-b-2 pb-4 border-gray-400 border-opacity-10 w-full">
+              Personal Projects
+            </h1>
+            <div className="flex mt-5 w-full gap-2">
+              <div className="basis-4/12 flex flex-col  bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image
+                    src="/sureplug.svg"
+                    width={70}
+                    height={70}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">Sureplug</p>
+                    <p className="text-white text-base">Website</p>
+                    <p className="text-white text-[10px]">
+                      HTML, CSS, PHP, JQuery & MysQL
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="basis-4/12 flex flex-col bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image src="/scam.png" width={50} height={5} />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">Scam Shield</p>
+                    <p className="text-white text-base">Mobile App</p>
+                    <p className="text-white text-[10px]">Flutter & Firebase</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="basis-4/12 flex flex-col bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image src="/track.png" width={70} height={5} />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">Track it</p>
+                    <p className="text-white text-base">Mobile App</p>
+                    <p className="text-white text-[10px]">
+                      Flutter, Google Maps API & Firebase
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex mt-5 w-full gap-2">
+              <div className="basis-4/12 flex flex-col  bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image
+                    src="/nilest.svg"
+                    width={70}
+                    height={30}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">Virtual E-Learning</p>
+                    <p className="text-white text-base">Website</p>
+                    <p className="text-white text-[10px]">
+                      Node, Express, Socket.io & MongoDB
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="basis-4/12 flex flex-col bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image src="/flag.svg" width={70} height={50} />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">States & LGAs API </p>
+                    <p className="text-white text-base">REST API</p>
+                    <p className="text-white text-[10px]">Node & Postman</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="basis-4/12 flex flex-col bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image
+                    src="/heart.png"
+                    width={70}
+                    height={5}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">Heart Disease E.S</p>
+                    <p className="text-white text-base">Mobile App</p>
+                    <p className="text-white text-[10px]">Flutter & Node JS</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="flex mt-5 w-full gap-2">
+              <div className="w-full flex flex-col  bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-3 rounded-xl ">
+                <div className="flex gap-3">
+                  <Image
+                    src="/qr.png"
+                    width={70}
+                    height={30}
+                    className="rounded-lg"
+                  />
+                  <div className="flex flex-col">
+                    <p className="text-white text-xl">QR Code attenance system</p>
+                    <p className="text-white text-base">Mobile App</p>
+                    <p className="text-white text-[10px]">
+                      Flutter & Firebase
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
       <div
         className={
           isStartMenuOpen
@@ -194,6 +336,11 @@ const Page = () => {
             className="p-1 rounded-md relative transition duration-100 hover:shadow-xl hover:bg-slate-900 hover:bg-opacity-50 hover:cursor-pointer hover:backdrop-blur-lg "
             onMouseEnter={() => setIsProjectsHovered(true)}
             onMouseLeave={() => setIsProjectsHovered(false)}
+            onClick={() => {
+              const audio = new Audio("click.wav");
+              audio.play();
+              setShowModal(true);
+            }}
           >
             <FcFolder className="text-4xl" />
             {isProjectsHovered && (
