@@ -538,7 +538,7 @@ const Page = () => {
           showModal ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="bg-opacity-100 backdrop-blur-3xl border border-gray-400  w-[1000px] h-auto p-1 rounded-lg shadow-xl  border-opacity-10">
+        <div className="bg-opacity-100 backdrop-blur-3xl border border-gray-400  w-[1000px] smbelow:w-[95%] smbelow:h-[600px]  smbelow:overflow-y-auto smbelow:mt-5 h-auto p-1 rounded-lg shadow-xl  border-opacity-10 ">
           <div className="flex">
             <MdOutlineClose
               className="text-white text-4xl ml-auto p-1  hover:bg-red-600 rounded-tr-md rounded-br-md"
@@ -838,11 +838,11 @@ const Page = () => {
               !statesapi &&
               !heart &&
               !qr && (
-                <div className="flex flex-col w-full">
-                  <h1 className="text-4xl font-medium text-white border-b-2 pb-4 border-gray-400 border-opacity-10 w-full">
+                <div className="flex flex-col w-full ">
+                  <h1 className="text-4xl smbelow:text-2xl font-medium text-white border-b-2 pb-4 border-gray-400 border-opacity-10 w-full">
                     Personal Projects
                   </h1>
-                  <div className="flex mt-5 w-full gap-2">
+                  <div className="flex mt-5 w-full smbelow:flex-col gap-2 ">
                     <div
                       onClick={() => {
                         const audio = new Audio("click.wav");
@@ -909,7 +909,7 @@ const Page = () => {
                     </div>
                   </div>
 
-                  <div className="flex mt-5 w-full gap-2">
+                  <div className="flex mt-5 w-full smbelow:flex-col gap-2">
                     <div
                       onClick={() => {
                         const audio = new Audio("click.wav");
@@ -1099,7 +1099,7 @@ const Page = () => {
                 <hr></hr>
                 <div className="flex items-start justify-start gap-[140px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
                   <p>Email:</p>
-                  <p>jethroadamzy@gmail.com</p>
+                  <p className="smbelow:truncate">jethroadamzy@gmail.com</p>
                 </div>
                 <div className="flex items-start justify-start gap-[80px] border-t-2 p-1 border-gray-400 border-opacity-10 w-full">
                   <p>Phone Number:</p>
