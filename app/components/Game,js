@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-// Define your card data
 const cardData = [
-  { id: 1, value: 'A' },
-  { id: 2, value: 'B' },
-  { id: 3, value: 'C' },
-  { id: 4, value: 'D' },
-  { id: 5, value: 'E' },
-  { id: 6, value: 'F' },
-  { id: 7, value: 'G' },
-  { id: 8, value: 'H' },
-  { id: 9, value: 'A' },
-  { id: 10, value: 'B' },
-  { id: 11, value: 'C' },
-  { id: 12, value: 'D' },
-  { id: 13, value: 'E' },
-  { id: 14, value: 'F' },
-  { id: 15, value: 'G' },
-  { id: 16, value: 'H' },
+  { id: 1, value: "A" },
+  { id: 2, value: "B" },
+  { id: 3, value: "C" },
+  { id: 4, value: "D" },
+  { id: 5, value: "E" },
+  { id: 6, value: "F" },
+  { id: 7, value: "G" },
+  { id: 8, value: "H" },
+  { id: 9, value: "A" },
+  { id: 10, value: "B" },
+  { id: 11, value: "C" },
+  { id: 12, value: "D" },
+  { id: 13, value: "E" },
+  { id: 14, value: "F" },
+  { id: 15, value: "G" },
+  { id: 16, value: "H" },
 ];
 
 const Game = () => {
@@ -42,7 +41,11 @@ const Game = () => {
   }, [flipped]);
 
   const handleCardClick = (index) => {
-    if (flipped.length < 2 && !flipped.includes(index) && !solved.includes(cards[index].id)) {
+    if (
+      flipped.length < 2 &&
+      !flipped.includes(index) &&
+      !solved.includes(cards[index].id)
+    ) {
       setFlipped([...flipped, index]);
     }
   };
@@ -52,10 +55,10 @@ const Game = () => {
     return (
       <div
         key={index}
-        className={`memory-card ${isFlipped ? 'flipped' : ''}`}
+        className={`memory-card ${isFlipped ? "flipped" : ""}`}
         onClick={() => handleCardClick(index)}
       >
-        {isFlipped ? card.value : '?'}
+        {isFlipped ? card.value : "?"}
       </div>
     );
   };
