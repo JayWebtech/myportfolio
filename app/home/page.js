@@ -19,26 +19,26 @@ import { MdOutlineClose } from "react-icons/md";
 import AnimatedItem from "../components/AnimatedItem";
 import { BsChevronLeft } from "react-icons/bs";
 import { FaGamepad } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const cardData = [
-    { id: 1, value: 'A', imageUrl: 'g1.svg' },
-    { id: 2, value: 'B', imageUrl: 'g2.svg' },
-    { id: 3, value: 'C', imageUrl: 'g3.svg' },
-    { id: 4, value: 'D', imageUrl: 'g4.svg' },
-    { id: 5, value: 'E', imageUrl: 'g5.svg' },
-    { id: 6, value: 'F', imageUrl: 'g6.svg' },
-    { id: 7, value: 'A', imageUrl: 'g1.svg' },
-    { id: 8, value: 'B', imageUrl: 'g2.svg' },
-    { id: 9, value: 'C', imageUrl: 'g3.svg' },
-    { id: 10, value: 'D', imageUrl: 'g4.svg' },
-    { id: 11, value: 'E', imageUrl: 'g5.svg' },
-    { id: 12, value: 'F', imageUrl: 'g6.svg' },
-  ];
-  
+  { id: 1, value: "A", imageUrl: "g1.svg" },
+  { id: 2, value: "B", imageUrl: "g2.svg" },
+  { id: 3, value: "C", imageUrl: "g3.svg" },
+  { id: 4, value: "D", imageUrl: "g4.svg" },
+  { id: 5, value: "E", imageUrl: "g5.svg" },
+  { id: 6, value: "F", imageUrl: "g6.svg" },
+  { id: 7, value: "A", imageUrl: "g1.svg" },
+  { id: 8, value: "B", imageUrl: "g2.svg" },
+  { id: 9, value: "C", imageUrl: "g3.svg" },
+  { id: 10, value: "D", imageUrl: "g4.svg" },
+  { id: 11, value: "E", imageUrl: "g5.svg" },
+  { id: 12, value: "F", imageUrl: "g6.svg" },
+];
 
 const Page = () => {
+    const [screenWidth, setScreenWidth] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isStartMenuHovered, setIsStartMenuHovered] = useState(false);
   const [isProjectsHovered, setIsProjectsHovered] = useState(false);
@@ -102,13 +102,10 @@ const Page = () => {
       // Check for a match
       if (cards[flipped[0]].value === cards[flipped[1]].value) {
         setSolved([...solved, cards[flipped[0]].id, cards[flipped[1]].id]);
-        
       }
       setTimeout(() => setFlipped([]), 1000);
     }
-   
   }, [flipped]);
-
 
   const handleCardClick = (index) => {
     if (
@@ -121,54 +118,71 @@ const Page = () => {
     }
   };
 
+  useEffect(() => {
+    // Function to update screenWidth state
+    const updateScreenWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    // Initial screen width on component mount
+    updateScreenWidth();
+
+    // Attach event listener to update screenWidth when the window is resized
+    window.addEventListener('resize', updateScreenWidth);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', updateScreenWidth);
+    };
+  }, []);
+
   const renderCard = (card, index) => {
     const isFlipped = flipped.includes(index) || solved.includes(card.id);
-  
+
     return (
       <div
         key={index}
-        className={`basis-2/12 flex items-center justify-center w-[100px] h-[100px] text-center font-Rubik font-medium text-3xl cursor-pointer bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-4 rounded-xl memory-card ${isFlipped ? 'flipped' : ''}`}
+        className={`basis-2/12 flex items-center justify-center w-[100px] h-[100px] text-center font-Rubik font-medium text-3xl cursor-pointer bg-black bg-opacity-30 border-2 border-gray-400 border-opacity-10 backdrop-blur-xl p-4 rounded-xl memory-card ${
+          isFlipped ? "flipped" : ""
+        }`}
         onClick={() => {
-            const audio = new Audio("click.wav");
-            audio.play();
-            handleCardClick(index)
-          }}
+          const audio = new Audio("click.wav");
+          audio.play();
+          handleCardClick(index);
+        }}
       >
         {isFlipped ? (
-          <Image src={`../../${card.imageUrl}`} alt={card.value} width={80} height={80} className="object-contain" />
+          <Image
+            src={`../../${card.imageUrl}`}
+            alt={card.value}
+            width={80}
+            height={80}
+            className="object-contain"
+          />
         ) : (
           <span>?</span>
         )}
       </div>
     );
   };
-  
+
   return (
     <main
       className="flex flex-col h-screen items-center justify-center bg-slate-950 homepage font-Rubik font-light"
-      pointer-events="auto"
-      //   onClick={() => {
-      //     if (click) {
-      //       // const audio = new Audio("click.wav");
-      //       // audio.play();
-      //       isClick(!click);
-      //       screenSet(!screen);
-      //       setIsStartMenuOpen(!isStartMenuOpen);
-      //     }
-      //   }}
+      pointerEvents="auto"
     >
-        <ToastContainer
-position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className={isStartMenuOpen ? "hidden" : "block w-full"}>
         <div className="flex flex-col items-start justify-start w-full p-8 gap-6">
           <div
@@ -244,7 +258,7 @@ theme="colored"
           <div className="flex flex-col items-start justify-start  p-5">
             <AnimatedItem animationConfig={{ delay: 0.1 }}>
               <div className="flex flex-col w-full">
-              <h1 className="text-white">Moves: {moveCount}</h1>
+                <h1 className="text-white">Moves: {moveCount}</h1>
                 <section className="mt-2 text-white">
                   <div className="flex justify-center items-center">
                     <div className="memory-match-game">
@@ -1015,8 +1029,8 @@ theme="colored"
         }
       >
         {isStartMenuOpen && screen && (
-          <div className="flex  flex-col mt-auto bg-opacity-100 backdrop-blur-lg border border-gray-400 border-opacity-10 text-white rounded-2xl text-[13px] w-[450px] h-auto text-center">
-            <div className="flex space-x-8 items-center justify-center  p-5 ">
+          <div className="flex  flex-col mt-auto bg-opacity-100 backdrop-blur-lg border border-gray-400 border-opacity-10 text-white rounded-2xl text-[13px] w-[450px] h-auto text-center smbelow:w-[95%]">
+            <div className="flex space-x-8 items-center justify-center smbelow:flex-wrap smbelow:item-start smbelow:space-x-2 smbelow:justify-evenly  p-5 ">
               <div
                 className="flex flex-col items-center justify-center cursor-pointer"
                 onClick={() => {
@@ -1025,8 +1039,8 @@ theme="colored"
                   setShowModal(true);
                 }}
               >
-                <FcFolder className="text-5xl" />
-                <p className="text-center">Projects</p>
+                <FcFolder className="text-5xl smbelow:text-4xl" />
+                <p className="text-center smbelow:hidden">Projects</p>
               </div>
               <Link
                 href="https://drive.google.com/file/d/11DUIKYSHdVQ-An9-0nHBJJf9Z5LMYqWi/view?usp=sharing"
@@ -1037,8 +1051,8 @@ theme="colored"
                 }}
               >
                 <div className="flex flex-col items-center justify-center">
-                  <BiSolidFilePdf className="text-5xl text-red-600" />
-                  <p className="text-center">Resume</p>
+                  <BiSolidFilePdf className="text-5xl text-red-600 smbelow:text-4xl" />
+                  <p className="text-center smbelow:hidden">Resume</p>
                 </div>
               </Link>
               <div
@@ -1049,8 +1063,8 @@ theme="colored"
                   setexperience(true);
                 }}
               >
-                <FcCollaboration className="text-5xl cursor-pointer" />
-                <p className="text-center">Experience</p>
+                <FcCollaboration className="text-5xl cursor-pointer smbelow:text-4xl" />
+                <p className="text-center smbelow:hidden">Experience</p>
               </div>
               <div
                 className="flex flex-col items-center justify-center"
@@ -1060,8 +1074,8 @@ theme="colored"
                   setImpact(true);
                 }}
               >
-                <FcBullish className="text-5xl cursor-pointer" />
-                <p className="text-center">Impact</p>
+                <FcBullish className="text-5xl cursor-pointer smbelow:text-4xl" />
+                <p className="text-center smbelow:hidden">Impact</p>
               </div>
               <div
                 className="flex flex-col items-center justify-center"
@@ -1071,8 +1085,8 @@ theme="colored"
                   setEducation(true);
                 }}
               >
-                <FcGraduationCap className="text-5xl cursor-pointer" />
-                <p className="text-center">Education</p>
+                <FcGraduationCap className="text-5xl cursor-pointer smbelow:text-4xl" />
+                <p className="text-center smbelow:hidden">Education</p>
               </div>
             </div>
 
@@ -1138,17 +1152,22 @@ theme="colored"
         )}
       </div>
       <div className="flex items-center justify-center p-3 backdrop-blur-3xl space-x-6 w-screen">
-        <div className="basis-2/12 flex space-x-3">
-          <BsFillCloudFill className="text-4xl text-blue-500" />
-          <div className="flex flex-col">
-            <p className="text-white font-Rubik font-light">
-              27<sup>°</sup>C
-            </p>
-            <p className="text-white text-[13px] font-Rubik font-light">
-              Cloudy
-            </p>
-          </div>
-        </div>
+        {
+            screenWidth >= parseInt(639) && (
+                <div className="basis-2/12 flex space-x-3">
+                <BsFillCloudFill className="text-4xl text-blue-500" />
+                <div className="flex flex-col">
+                  <p className="text-white font-Rubik font-light">
+                    27<sup>°</sup>C
+                  </p>
+                  <p className="text-white text-[13px] font-Rubik font-light">
+                    Cloudy
+                  </p>
+                </div>
+              </div>
+            )
+        }
+       
         <div className="basis-8/12 flex items-center justify-center space-x-5">
           <div
             className={
@@ -1255,8 +1274,8 @@ theme="colored"
             </div>
           </Link>
         </div>
-        <div className="basis-2/12">
-          <div className="flex flex-col items-end">
+        <div className="lg:basis-2/12 lg:flex md:basis-2/12 md:flex smbelow:hidden">
+          <div className="flex flex-col items-end w-full">
             <p className="text-white font-Rubik font-light">{formattedTime}</p>
             <p className="text-white text-[13px] font-Rubik font-light">
               {formattedDate}
