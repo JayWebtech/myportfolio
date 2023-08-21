@@ -15,7 +15,7 @@ module.exports = {
       fontFamily: {
         barriecito: ['Barriecito', 'cursive'],
         handjet: ['Handjet', 'cursive'],
-        dancingScript: ['Dancing Script', 'cursive'],
+        Rubik: ['Rubik'],
         Rajdhani: ['Rajdhani', 'cursive'],
       },
       fontWeight: {

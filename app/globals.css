@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Dancing+Script&family=Handjet:wght@300;400&family=Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Rubik:wght@300;400;500&family=Handjet:wght@300;400&family=Rajdhani&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body{
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 .font-light {
   font-weight: 200;
@@ -29,11 +29,11 @@ body{
   width: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #ddd; 
+  background-color: #eee; 
   border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #ddd;
+  background-color: #999;
   border-radius: 10px;
 }
 /* .booting{
