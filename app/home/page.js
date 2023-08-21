@@ -168,7 +168,7 @@ const Page = () => {
 
   return (
     <main
-      className="flex fixed flex-col h-screen items-center justify-center bg-slate-950 homepage font-Rubik font-light"
+      className="flex fixed flex-col h-full items-center justify-center bg-slate-950 homepage font-Rubik font-light"
       pointerEvents="auto"
     >
       <ToastContainer
@@ -1168,7 +1168,7 @@ const Page = () => {
             )
         }
        
-        <div className="basis-8/12 flex items-center justify-center space-x-5">
+        <div className="basis-8/12 flex items-center justify-center space-x-5 ">
           <div
             className={
               isStartMenuOpen
