@@ -168,7 +168,7 @@ const Page = () => {
 
   return (
     <main
-      className="flex flex-col h-screen items-center justify-center bg-slate-950 homepage font-Rubik font-light"
+      className="flex fixed flex-col h-screen items-center justify-center bg-slate-950 homepage font-Rubik font-light"
       pointerEvents="auto"
     >
       <ToastContainer
@@ -538,7 +538,7 @@ const Page = () => {
           showModal ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        <div className="bg-opacity-100 backdrop-blur-3xl border border-gray-400  w-[1000px] smbelow:w-[95%] smbelow:h-[600px]  smbelow:overflow-y-auto smbelow:mt-5 h-auto p-1 rounded-lg shadow-xl  border-opacity-10 ">
+        <div className="bg-opacity-100 backdrop-blur-3xl border border-gray-400  w-[1000px]  smbelow:h-[600px]  smbelow:overflow-y-auto smbelow:mt-5 h-auto p-1 rounded-lg shadow-xl  border-opacity-10 ">
           <div className="flex">
             <MdOutlineClose
               className="text-white text-4xl ml-auto p-1  hover:bg-red-600 rounded-tr-md rounded-br-md"
