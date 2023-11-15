@@ -36,7 +36,7 @@ const DesktopItems = ({ isStartMenuOpen, setShowModal, setGame }) => {
         </Link>
 
         <Link
-          href="https://drive.google.com/file/d/11DUIKYSHdVQ-An9-0nHBJJf9Z5LMYqWi/view?usp=sharing"
+          href="https://drive.google.com/file/d/1rvWlEg0eJtkVxcpKSfzUObqTY9TwuLQG/view?usp=sharing"
           onClick={() => {
             const audio = new Audio("click.wav");
             audio.play();

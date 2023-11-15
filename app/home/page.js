@@ -50,6 +50,7 @@ const Page = () => {
       <Projects showModal={showModal} setShowModal={setShowModal} />
       <Menu
         isStartMenuOpen={isStartMenuOpen}
+        setShowModal={setShowModal}
         setIsStartMenuOpen={setIsStartMenuOpen}
         screen={screen}
         setEducation={setEducation}
