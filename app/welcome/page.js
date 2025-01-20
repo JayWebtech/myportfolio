@@ -53,21 +53,8 @@ const page = () => {
             height={150}
             className="mb-5 rounded-full"
           />
-          <h1 className="text-4xl text-white font-barriecito">Welcome</h1>
-          <p className="text-base text-white font-Rajdhani mb-4">
-            Please enter your name
-          </p>
-          <input
-            type="text"
-            className="border-gray-400 border-b-2 w-[300px] rounded-md bg-gray-950 p-2  text-white outline-none mb-5"
-            placeholder="Enter your name"
-            name="yourname"
-            autoComplete="false"
-            autoSave="false"
-            onChange={nameHanderler}
-            onBlur={handleBlur}
-            onClick={onInputClick}
-          />
+          <h1 className="text-4xl text-white mb-5">Welcome to my Portfolio</h1>
+         
           <button
             className="py-3 px-1 text-white rounded-md w-[150px] backdrop-blur-2xl shadow-lg  flex items-center justify-center"
             onClick={proceed}

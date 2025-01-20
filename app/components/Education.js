@@ -37,7 +37,7 @@ const Education = ({ education, setEducation }) => {
                         Technology, Kaduna
                       </h3>
                       <p className="text-sm">
-                        Higher National Diploma in Computer Science
+                        Higher National Diploma in Computer Science - First Class
                       </p>
                     </div>
                   </div>

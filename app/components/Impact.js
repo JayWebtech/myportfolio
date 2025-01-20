@@ -33,7 +33,7 @@ const Impact = ({ impact, setImpact }) => {
                     {/* EcoHotels */}
                     <div className="flex flex-col space-y-2">
                       <h3 className="text-lg font-medium">
-                        Google Developers Students Club
+                       1. Google Developers Students Club
                       </h3>
                       <h4 className="text-md font-medium">GDSC Lead</h4>
                       <p className="text-sm font-Rubik font-light">
@@ -54,7 +54,7 @@ const Impact = ({ impact, setImpact }) => {
                     {/* TAFHUB */}
                     <div className="flex flex-col space-y-2">
                       <h4 className="text-lg font-medium">
-                        National Association of Computing Students (NACOS)
+                       2. National Association of Computing Students (NACOS)
                       </h4>
                       <h4 className="text-md font-medium">NACOS President</h4>
                       <p className="text-sm">
