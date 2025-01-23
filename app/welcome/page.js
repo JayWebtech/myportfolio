@@ -53,7 +53,7 @@ const page = () => {
             height={150}
             className="mb-5 rounded-full"
           />
-          <h1 className="text-4xl text-white mb-5">Welcome to my Portfolio</h1>
+          <h1 className="text-2xl text-white mb-5 text-center">Welcome to my Portfolio</h1>
          
           <button
             className="py-3 px-1 text-white rounded-md w-[150px] backdrop-blur-2xl shadow-lg  flex items-center justify-center"
